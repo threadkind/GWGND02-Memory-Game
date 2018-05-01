@@ -1,10 +1,18 @@
+#cardsContainer {
+	background: yellow;
+	width: 80%;
+	padding: 2%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+}
 .card {
 	perspective: 1000px;
+	width: 25%;
 }
 .cardFront {
 	position: relative;
-	background: pink;
-	background: url(https://loremflickr.com/150/150);
 	color: white;
 	backface-visibility: hidden;
 	transform: rotateY(0deg);
@@ -18,7 +26,8 @@
 }
 .cardBack {
 	position: relative;
-	background: purple;
+	background: url(../images/back.png);
+	background-size: cover;
 	color: white;
 	transform: rotateY(180deg);
 	top: -160px;
@@ -31,14 +40,45 @@
 	backface-visibility: hidden;
 	transition: transform 1s;
 }
+.card1{
+	background: url(../images/front1.png);
+	background-size: cover;
+}
+.card2{
+	background: url(../images/front2.png);
+	background-size: cover;
+}
+.card3{
+	background: url(../images/front3.png);
+	background-size: cover;
+}
+.card4{
+	background: url(../images/front4.png);
+	background-size: cover;
+}
+.card5{
+	background: url(../images/front5.png);
+	background-size: cover;
+}
+.card6{
+	background: url(../images/front6.png);
+	background-size: cover;
+}
+.card7{
+	background: url(../images/front7.png);
+	background-size: cover;
+}
+.card8{
+	background: url(../images/front8.png);
+	background-size: cover;
+}
 /* C A R D    S I Z E */
-.card, .cardFront, .cardBack {
+.cardFront, .cardBack {
 	height: 150px;
 	width: 150px;
-	margin: 10px;
 }
-
-#cardsContainer {
-	display: flex;
-
+.card {
+	height: 150px;
+	width: 22%;
+	margin-bottom: 2%;
 }

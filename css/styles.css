@@ -1,11 +1,7 @@
-.cardContainer {
-	perspective: 500px;
-}
 .card {
-
+	perspective: 1000px;
 }
 .cardFront {
-	z-index: 5;
 	position: relative;
 	background: pink;
 	background: url(https://loremflickr.com/150/150);
@@ -21,7 +17,6 @@
 
 }
 .cardBack {
-	z-index: 0;
 	position: relative;
 	background: purple;
 	color: white;
@@ -37,12 +32,13 @@
 	transition: transform 1s;
 }
 /* C A R D    S I Z E */
-.cardContainer, .card, .cardFront, .cardBack {
+.card, .cardFront, .cardBack {
 	height: 150px;
 	width: 150px;
 	margin: 10px;
 }
 
-main {
+#cardsContainer {
 	display: flex;
+
 }

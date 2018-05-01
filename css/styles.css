@@ -1,0 +1,48 @@
+.cardContainer {
+	perspective: 500px;
+}
+.card {
+
+}
+.cardFront {
+	z-index: 5;
+	position: relative;
+	background: pink;
+	background: url(https://loremflickr.com/150/150);
+	color: white;
+	backface-visibility: hidden;
+	transform: rotateY(0deg);
+	transition: transform 1s;
+}
+.frontFlipped {
+	transform: rotateY(-180deg);
+	transition: transform 1s, backface-visibility 1s;
+    backface-visibility: hidden;
+
+}
+.cardBack {
+	z-index: 0;
+	position: relative;
+	background: purple;
+	color: white;
+	transform: rotateY(180deg);
+	top: -160px;
+	left: 0;
+	backface-visibility: hidden;
+	transition: transform 1s;
+}
+.backFlipped {
+	transform: rotateY(0deg);
+	backface-visibility: hidden;
+	transition: transform 1s;
+}
+/* C A R D    S I Z E */
+.cardContainer, .card, .cardFront, .cardBack {
+	height: 150px;
+	width: 150px;
+	margin: 10px;
+}
+
+main {
+	display: flex;
+}

@@ -1,13 +1,14 @@
-//card deck array
-let cardDeck = ['card1', 'card1', 'card2', 'card2', 'card3', 'card3', 'card4', 'card4', 'card5', 'card5', 'card6', 'card6', 'card7', 'card7', 'card8', 'card8'];
+//*******************shuffle the cards........
 
-//shuffle the cards........
+//card deck array
+const cardDeck = ['card1', 'card1', 'card2', 'card2', 'card3', 'card3', 'card4', 'card4', 'card5', 'card5', 'card6', 'card6', 'card7', 'card7', 'card8', 'card8'];
+
 //variable to hold the new shuffled deck
-let shuffledDeck = [];
+const shuffledDeck = [];
 
 //for loop to....
 for (let i = (cardDeck.length - 1); i >= 0; i--){
-	//create a random number less than the length of the cardDeck
+	//...create a random number less than the length of the cardDeck
 	const random = Math.floor(Math.random()*cardDeck.length);
 	//put that card in the shuffledDeck...
 	shuffledDeck.push(cardDeck[random]);
@@ -15,9 +16,21 @@ for (let i = (cardDeck.length - 1); i >= 0; i--){
 	cardDeck.splice(random, 1);
 }
 
+//get all cards
+const cards = document.querySelectorAll('.card');
+//for loop to assign a shuffled class to each card
+for (let j = 0; j < cards.length; j++){
+	cards[j].children[0].classList.add(shuffledDeck[j]);
+}
+//cards are now randomly assigned on the screen
+// **********************end of shuffle cards
+
+// **********************flip cards if they are clicked......
 //set variable for card container
 const cardContain = document.getElementById('cardsContainer');
-
+//set variable for first card clicked
+let firstCard = "blank";
+let secondCard = "blank"
 //add event delegation to the card container rather than each individual card
 cardContain.addEventListener('click', function(e){
 	//set variable for the card that was clicked
@@ -32,6 +45,23 @@ cardContain.addEventListener('click', function(e){
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
 };
-
+	//if firstCard variable is blank, assign the card number to it
+	if(firstCard === "blank"){
+		firstCard = card.children[0].classList[1];
+		console.log(firstCard);
+	}
+	//otherwise assign the card number to the secondCard
+	else{
+		secondCard = card.children[0].classList[1];
+		console.log(secondCard);
+		//check to see if the cards match
+		if(firstCard === secondCard){
+			console.log("It's a match!!");
+		}
+		else {
+			console.log("Doesn't match :(");
+		}
+		firstCard = "blank"
+	}
 
 });

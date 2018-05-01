@@ -1,3 +1,20 @@
+//card deck array
+let cardDeck = ['card1', 'card1', 'card2', 'card2', 'card3', 'card3', 'card4', 'card4', 'card5', 'card5', 'card6', 'card6', 'card7', 'card7', 'card8', 'card8'];
+
+//shuffle the cards........
+//variable to hold the new shuffled deck
+let shuffledDeck = [];
+
+//for loop to....
+for (let i = (cardDeck.length - 1); i >= 0; i--){
+	//create a random number less than the length of the cardDeck
+	const random = Math.floor(Math.random()*cardDeck.length);
+	//put that card in the shuffledDeck...
+	shuffledDeck.push(cardDeck[random]);
+	//...and remove it from the cardDeck
+	cardDeck.splice(random, 1);
+}
+
 //set variable for card container
 const cardContain = document.getElementById('cardsContainer');
 

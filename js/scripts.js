@@ -35,11 +35,14 @@ let secondCard = "blank"
 cardContain.addEventListener('click', function(e){
 	//set variable for the card that was clicked
 	const card = e.target.parentElement;
-	//make sure we are clicking on an actual card and not somewhere else in the card container
-	if (card.classList[0] === 'card') {
-		//set variables for the front and back of the card
-		const front = card.children[0];
-		const back = card.children[1];
+	//set variables for the front and back of the card
+	const front = card.children[0];
+	const back = card.children[1];
+	console.log(front);
+	console.log(back);
+
+	//make sure we are clicking on an actual card and not somewhere else in the card container (and that it has not already been matched)
+	if (card.classList[0] === 'card' && card.classList.length === 1) {
 
 		//toggle css classes on the front and back of the cards to make them flip
 		front.classList.toggle('frontFlipped');
@@ -56,7 +59,11 @@ cardContain.addEventListener('click', function(e){
 		console.log(secondCard);
 		//check to see if the cards match
 		if(firstCard === secondCard){
-			console.log("It's a match!!");
+			//if the cards match, add a 'matched' class to the card
+			console.log(`It's a match!!  ${firstCard}`);
+			const matched = document.getElementsByClassName(firstCard);
+			matched[0].parentElement.classList.add('matched');
+			matched[1].parentElement.classList.add('matched');
 		}
 		else {
 			console.log("Doesn't match :(");

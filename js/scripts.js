@@ -1,3 +1,5 @@
+//variable to count the number of moves
+let moves = 0;
 //*******************shuffle the cards........
 
 //card deck array
@@ -78,21 +80,26 @@ cardContain.addEventListener('click', function(e){
 			selected[1].classList.add('matched');
 
 			}
-		else {
-			console.log("Doesn't match :(");
-		}
+		let notMatched = 0;
 		for (let k = 0; k < cards.length; k++){
-				cards[k].classList.remove('selected');
+			cards[k].classList.remove('selected');
 				if(cards[k].classList[1] != "matched"){
+					notMatched++;
 					setTimeout(function(){
 						cards[k].children[1].classList.remove('frontFlipped');
 						cards[k].children[0].classList.remove('backFlipped');
 					}, 1000)
-				}
+				}//end of if stmt
 			}
+		if(notMatched === 0){
+			setTimeout(function(){
+				alert("You Won!");
+			}, 1000);
+		};
 
 		firstCardClass = "blank"
-
+		moves++;
+		document.querySelector("#moves").innerText = `Number of Moves: ${moves}`
 	}
 
 });

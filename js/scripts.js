@@ -101,7 +101,6 @@ for (let j = 0; j < dom.cards.length; j++){
 //********** END OF CARD SHUFFLE**********
 
 
-
 //**********FLIP CARDS IF THEY ARE CLICKED...**********
 //add event delegation to the card container rather than each individual card
 dom.cardsContainer.addEventListener('click', function(e){
@@ -119,65 +118,75 @@ dom.cardsContainer.addEventListener('click', function(e){
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
 
-	//if firstCard variable is blank, assign the card number to it and add other info about card to their variables
-	if(js.firstCardClass === "blank"){
-		js.firstCard = card;
-		js.firstCardNumber = card.children[1].classList[2]
-		js.firstCardClass = card.children[1].classList[1];
-		card.classList.add('selected');
-	}
-	//otherwise assign the card number (and other variables) to the secondCard
-	else{
-		js.secondCard = card;
-		js.secondCardNumber = card.children[1].classList[2]
-		js.secondCardClass = card.children[1].classList[1];
-		card.classList.add('selected');
+		//if firstCard variable is blank, assign the card number to it and add other info about card to their variables
+		if(js.firstCardClass === "blank"){
+			js.firstCard = card;
+			js.firstCardNumber = card.children[1].classList[2]
+			js.firstCardClass = card.children[1].classList[1];
+			card.classList.add('selected');
+		}
+		//otherwise assign the card number (and other variables) to the secondCard
+		else{
+			js.secondCard = card;
+			js.secondCardNumber = card.children[1].classList[2]
+			js.secondCardClass = card.children[1].classList[1];
+			card.classList.add('selected');
 
-		//check to see if the cards match
-		if(js.firstCardClass === js.secondCardClass && js.firstCardNumber != js.secondCardNumber ){
+			//check to see if the cards match and if they do add a 'matched' class
+			if(js.firstCardClass === js.secondCardClass && js.firstCardNumber != js.secondCardNumber ){
 
-			//if the cards match, add a 'matched' class to the cards
-			const selected = document.querySelectorAll('.selected');
-			selected[0].classList.add('matched');
-			selected[1].classList.add('matched');
+				//if the cards match, add a 'matched' class to the cards
+				const selected = document.querySelectorAll('.selected');
+				selected[0].classList.add('matched');
+				selected[1].classList.add('matched');
 
 			}
-		//create counter for the number of cards that are not matched
-		let notMatched = 0;
-		//set up next turn if there are still unmatched cards
-		for (let k = 0; k < dom.cards.length; k++){
-			//deselect all cards to start next turn
-			dom.cards[k].classList.remove('selected');
-			//if the card has a call matched
-			if(dom.cards[k].classList[1] != "matched"){
-				//increase the matched counter
-				notMatched++;
-				//set a timeout function to flip the cards back around after 1 second if they don't match
-				setTimeout(function(){
-					dom.cards[k].children[1].classList.remove('frontFlipped');
-					dom.cards[k].children[0].classList.remove('backFlipped');
-					}, 1000)
+
+			//create counter for the number of cards that are not matched
+			let notMatched = 0;
+
+			//set up next turn if there are still unmatched cards
+			for (let k = 0; k < dom.cards.length; k++){
+				//deselect all cards to start next turn
+				dom.cards[k].classList.remove('selected');
+				//if the card does not have the matched class...
+				if(dom.cards[k].classList[1] != "matched"){
+					//...increase the matched counter
+					notMatched++;
+					//set a timeout function to flip the cards back around after 1 second if they don't match
+					setTimeout(function(){
+						dom.cards[k].children[1].classList.remove('frontFlipped');
+						dom.cards[k].children[0].classList.remove('backFlipped');
+						}, 1000)
 				}//end of if stmt
-			}
-		//if all of the cards are matched
-		if(notMatched === 0){
-			//display the winner pop up with the game data on it
-			setTimeout(function(){
-				const finalStars = document.querySelector(".stars").innerHTML;
-				console.log(finalStars);
-				document.querySelector("#gameTime").innerText =
-				`${document.getElementById('timer').innerText}`;
-				document.querySelector(".winStars").innerHTML = finalStars;
-				dom.playAgain.addEventListener("click", funcs.resetGame);
-				dom.winner.classList.remove("noDisplay");
-			clearInterval(timerInterval);
-			}, 500);
+			}//end of for
+
+			//if all of the cards are matched
+			if(notMatched === 0){
+				//display the winner pop up with the game data on it
+				setTimeout(function(){
+					clearInterval(timerInterval); //stop timer
+
+					const finalStars = document.querySelector(".stars").innerHTML; //add final stars
+
+					document.querySelector("#gameTime").innerText =
+					`${document.getElementById('timer').innerText}`; //add final time
+
+					document.querySelector(".winStars").innerHTML = finalStars;
+					dom.playAgain.addEventListener("click", funcs.resetGame); //add play again button
+
+					dom.winner.classList.remove("noDisplay"); //show winner popup
+
+				}, 500);
 
 		};
 
+		//whether cards are matched or not...
 		//show moves on page
 		document.querySelector("#moves").innerText = `Moves:
 			${js.moves}`;
+
+		//check for the correct number of stars
 		//if over 1 move go down to 2 stars
 		if(js.moves > 20 && js.moves <= 25){
 			funcs.starCheck(".threeStars", ".twoStars");
@@ -186,11 +195,12 @@ dom.cardsContainer.addEventListener('click', function(e){
 		else if (js.moves > 25 ){
 			funcs.starCheck(".twoStars", ".oneStar");
 		}
-		js.firstCardClass = "blank";
-		js.moves++;
 
+		//reset firstCardClass
+		js.firstCardClass = "blank";
+
+		js.moves++;
 	}
-	};
+  	};
 
 });
-// document.querySelector(".threeStars").classList.remove("displayBlock");

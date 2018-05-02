@@ -84,7 +84,14 @@ cardContain.addEventListener('click', function(e){
 		}
 		for (let k = 0; k < cards.length; k++){
 				cards[k].classList.remove('selected');
+				if(cards[k].classList[1] != "matched"){
+					setTimeout(function(){
+						cards[k].children[0].classList.remove('frontFlipped');
+						cards[k].children[1].classList.remove('backFlipped');
+					}, 1000)
+				}
 			}
+
 		firstCardClass = "blank"
 
 	}

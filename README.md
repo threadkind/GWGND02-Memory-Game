@@ -1,21 +1,21 @@
-#Memory Game
+# Memory Game
 
 There are 8 pairs of cards randomly shuffled on the game board. Match up all the pairs of cards to win the game.
 
 ![memory game](https://lh3.googleusercontent.com/7u4Eug2nbtfqU6xxvxBxJ_osErBXWZIvjgFNNyVeX8Em9H3FSkk33t0eLTKuy3Ctr8U0hhuLBuK02CCeEpnaOCy-zVCSamUcPztMNCTIIai6DvyoQ_OAbEgaBeLUGnf3RZ8M_DWbBHEThBmAN278h1_vFMFgB48esMrI_Yxu2XXxh7UiSXPRaD3dag4BytAWBiGAje5Iy_11YjvvW72OOKQB9gQxDskAFpjG2uzF6JR8Ej28_3qfDPq83f6QuimOtH0moU54sTSG2R4UMG3_zgbwpQn-0jEV_8fX-KpA-BtEcX95zNizWc4-5dDRV62dH2BcNrAB8_yv30k5PgyZf5gHkF3hk-cu7335PSR0fdLrLczJJz0NhfG6LbM_q341MJpPMVFyQIItja5tu4X45lQTQ_M_GeE8zGDsx3ZLJP9cX5yvOU4snSwuNuQPvLNnVu5HE0A6V-Re2xMrd_PmQl9Po_b1pYu-dX930hkVMldJRagUZG9wnpDQ1cHE-MKqhuaW7dGMpFcra77qSRcTKL8OLr9TNbcaioQljvKsVWDa5UaaLtG6Ttor5qAw75_gbX4tUD4UmRn2NcKm1vy60qDGw8Zgl6B1bk4Z4tg=w398-h500-no)
 
-##Motivation
+## Motivation
 This game was built as part of the Grow With Google Front End Web Developer Nanodegree Scholarship. This is Project 2 in the course.
 Coded from scratch using HTML, CSS & Javascript.
 
 
-##Getting Started
+## Getting Started
 View the game here - [ Memory Game](http://portfolio.threadkind.com/GWGND02-Memory-Game/).
 
 The app incorporates responsive design, so it is able to be played across mobile devices, tablets and desktop computers.
 
 
-##How to Play
+## How to Play
 When you load the page there will be an overlay on the screen. Click on the play button to start the game.
 
 When you click to play the overlay will be removed, the game board is revealed and the time will start.
@@ -35,7 +35,7 @@ When you win the game there will be an overlay congratulating you and giving you
 On the winning overlay there will be a button to allow you to reset the game and play again.
 
 
-##Dependancies
+## Dependancies
 This game is written in HTML, CSS & Javascript. No additional libraries/frameworks/templates were used in its creation.
 
 The game uses [Google Font: Titan One](https://fonts.google.com/specimen/Titan+One).
@@ -43,6 +43,6 @@ The game uses [Google Font: Titan One](https://fonts.google.com/specimen/Titan+O
 All images used in the game were created by Amy Winne.
 
 
-##Author
+## Author
 - Amy W
 

@@ -140,7 +140,8 @@ cardContain.addEventListener('click', function(e){
 
 		};
 
-		document.querySelector("#moves").innerText = `Number of Moves: ${moves}`;
+		document.querySelector("#moves").innerText = `Moves:
+			${moves}`;
 		//if over 1 move go down to 2 stars
 		if(moves > 1 && moves <= 3){
 			threeStars.classList.add("noDisplay");

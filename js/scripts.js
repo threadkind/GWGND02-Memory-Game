@@ -1,5 +1,24 @@
 //variable to count the number of moves
 let moves = 0;
+
+//timer
+let timer = 0;
+
+function increaseTime(){
+	timer++;
+	if(timer < 60){
+	document.querySelector("#timer").innerText = `Time: ${timer}`
+	}
+	else {
+		const minutes = Math.floor(timer/60);
+		let seconds = timer - (minutes * 60);
+		if(seconds <10){
+			seconds = `0${seconds}`;
+		}
+	document.querySelector("#timer").innerText = `Time: ${minutes}:${seconds}`
+	}
+}
+const timerInterval = setInterval(increaseTime, 1000);
 //*******************shuffle the cards........
 
 //card deck array
@@ -93,7 +112,9 @@ cardContain.addEventListener('click', function(e){
 			}
 		if(notMatched === 0){
 			setTimeout(function(){
-				alert("You Won!");
+				alert(`You Won!
+					${document.getElementById('timer').innerText}`);
+				clearInterval(timerInterval);
 			}, 1000);
 		};
 

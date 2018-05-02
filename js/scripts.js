@@ -29,8 +29,8 @@ for (let j = 0; j < cards.length; j++){
 //set variable for card container
 const cardContain = document.getElementById('cardsContainer');
 //set variable for first card clicked
-let firstCard = "blank";
-let secondCard = "blank"
+let firstCardClass = "blank";
+let secondCardClass = "blank"
 //add event delegation to the card container rather than each individual card
 cardContain.addEventListener('click', function(e){
 	//set variable for the card that was clicked
@@ -42,33 +42,43 @@ cardContain.addEventListener('click', function(e){
 	console.log(back);
 
 	//make sure we are clicking on an actual card and not somewhere else in the card container (and that it has not already been matched)
-	if (card.classList[0] === 'card' && card.classList.length === 1) {
+	if (card.classList[0] === 'card' && card.classList[1] != 'matched') {
 
 		//toggle css classes on the front and back of the cards to make them flip
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
 };
 	//if firstCard variable is blank, assign the card number to it
-	if(firstCard === "blank"){
-		firstCard = card.children[0].classList[1];
-		console.log(firstCard);
+	if(firstCardClass === "blank"){
+
+		firstCardClass = card.children[0].classList[1];
+		console.log(firstCardClass);
+		card.classList.add('selected');
 	}
 	//otherwise assign the card number to the secondCard
 	else{
-		secondCard = card.children[0].classList[1];
-		console.log(secondCard);
+		secondCardClass = card.children[0].classList[1];
+		console.log(secondCardClass);
+		card.classList.add('selected');
+
 		//check to see if the cards match
-		if(firstCard === secondCard){
-			//if the cards match, add a 'matched' class to the card
-			console.log(`It's a match!!  ${firstCard}`);
-			const matched = document.getElementsByClassName(firstCard);
-			matched[0].parentElement.classList.add('matched');
-			matched[1].parentElement.classList.add('matched');
-		}
+		if(firstCardClass === secondCardClass){
+
+			//if the cards match, add a 'matched' class to the cards
+			console.log(`It's a match!!  ${firstCardClass}`);
+			const selected = document.querySelectorAll('.selected');
+			selected[0].classList.add('matched');
+			selected[1].classList.add('matched');
+
+			}
 		else {
 			console.log("Doesn't match :(");
 		}
-		firstCard = "blank"
+		for (let k = 0; k < cards.length; k++){
+				cards[k].classList.remove('selected');
+			}
+		firstCardClass = "blank"
+
 	}
 
 });

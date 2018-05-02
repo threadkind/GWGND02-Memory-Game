@@ -7,7 +7,7 @@ let timer = 0;
 function increaseTime(){
 	timer++;
 	if(timer < 60){
-	document.querySelector("#timer").innerText = `Time: ${timer}`
+	document.querySelector(".time").innerText = timer;
 	}
 	else {
 		const minutes = Math.floor(timer/60);
@@ -15,10 +15,18 @@ function increaseTime(){
 		if(seconds <10){
 			seconds = `0${seconds}`;
 		}
-	document.querySelector("#timer").innerText = `Time: ${minutes}:${seconds}`
+	document.querySelector(".	time").innerText = `${minutes}:${seconds}`
 	}
 }
-const timerInterval = setInterval(increaseTime, 1000);
+	const timerInterval = setInterval(increaseTime, 1000);
+
+document.getElementById("playButton").addEventListener("click", function(){
+		timer = 0;
+		document.getElementById("overlay").classList.add('noDisplay');
+		setTimeout(function(){
+			document.querySelector(".time").classList.remove("noDisplay")}, 1000);
+
+});
 
 //star variables
 const threeStars = document.querySelector('.threeStars');

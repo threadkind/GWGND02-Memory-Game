@@ -23,7 +23,7 @@ for (let i = (cardDeck.length - 1); i >= 0; i--){
 const cards = document.querySelectorAll('.card');
 //for loop to assign a shuffled class to each card
 for (let j = 0; j < cards.length; j++){
-	cards[j].children[0].classList.add(shuffledDeck[j], shuffledNumber[j]);
+	cards[j].children[1].classList.add(shuffledDeck[j], shuffledNumber[j]);
 }
 //cards are now randomly assigned on the screen
 // **********************end of shuffle cards
@@ -43,9 +43,9 @@ cardContain.addEventListener('click', function(e){
 	//set variable for the card that was clicked
 	const card = e.target.parentElement;
 	//set variables for the front and back of the card
-	const front = card.children[0];
-	const back = card.children[1];
-
+	const front = card.children[1];
+	const back = card.children[0];
+	console.log(e.target);
 	//make sure we are clicking on an actual card and not somewhere else in the card container (and that it has not already been matched)
 	if (card.classList[0] === 'card' && card.classList[1] != 'matched') {
 
@@ -56,17 +56,16 @@ cardContain.addEventListener('click', function(e){
 	//if firstCard variable is blank, assign the card number to it
 	if(firstCardClass === "blank"){
 		firstCard = card;
-		firstCardNumber = card.children[0].classList[2]
-		firstCardClass = card.children[0].classList[1];
-		console.log(firstCard);
+		firstCardNumber = card.children[1].classList[2]
+		firstCardClass = card.children[1].classList[1];
 		card.classList.add('selected');
 	}
 	//otherwise assign the card number to the secondCard
 	else{
 		secondCard = card;
-		secondCardNumber = card.children[0].classList[2]
+		secondCardNumber = card.children[1].classList[2]
 
-		secondCardClass = card.children[0].classList[1];
+		secondCardClass = card.children[1].classList[1];
 		card.classList.add('selected');
 
 		//check to see if the cards match
@@ -86,8 +85,8 @@ cardContain.addEventListener('click', function(e){
 				cards[k].classList.remove('selected');
 				if(cards[k].classList[1] != "matched"){
 					setTimeout(function(){
-						cards[k].children[0].classList.remove('frontFlipped');
-						cards[k].children[1].classList.remove('backFlipped');
+						cards[k].children[1].classList.remove('frontFlipped');
+						cards[k].children[0].classList.remove('backFlipped');
 					}, 1000)
 				}
 			}

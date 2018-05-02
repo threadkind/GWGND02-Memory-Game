@@ -15,7 +15,7 @@ function increaseTime(){
 		if(seconds <10){
 			seconds = `0${seconds}`;
 		}
-	document.querySelector("time").innerText = `${minutes}:${seconds}`
+	document.querySelector(".time").innerText = `${minutes}:${seconds}`
 	}
 }
 	const timerInterval = setInterval(increaseTime, 1000);

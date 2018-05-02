@@ -1,3 +1,6 @@
+if(window.innerHeight > window.innerWidth){
+    document.querySelector("#gameButtons").style.marginTop = "5vh";
+}
 //variable to count the number of moves
 let moves = 1;
 
@@ -23,6 +26,7 @@ function increaseTime(){
 document.getElementById("playButton").addEventListener("click", function(){
 		timer = 0;
 		document.getElementById("overlay").classList.add('noDisplay');
+		document.querySelector(".time").innerText = 0;
 		setTimeout(function(){
 			document.querySelector(".time").classList.remove("noDisplay")}, 1000);
 

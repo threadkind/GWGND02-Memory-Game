@@ -75,6 +75,14 @@
 	align-items: center;
 	border-radius: 10px 10px 0 0;
 }
+#gameButtons p {
+	font-size: 20px;
+	width: 100%;
+	text-align: center;
+	color: var(--white);
+	margin: 0;
+	padding: 0;
+}
 #moves, #timer, #reset {
 	background: var(--white);
 	color: var(--black);
@@ -87,6 +95,8 @@
 #stars {
 	height: 80px;
 	color: var(--yellow);
+	width: 45%;
+	text-align: center;
 	font-size: 50px;
 	text-shadow: 2px 2px 10px rgba(5,5,5,0.6);
 }
@@ -198,4 +208,38 @@
 }
 .card {
 	perspective: 1000px;
+}
+
+
+/* M E D I A    Q U E R I E S */
+@media screen and (min-width: 450px) {
+	.cardFront, .cardBack, .card {
+		height: 80px;
+		width: 80px;
+	}
+	.cardFront {
+		top: -80px;
+	}
+	#gameButtons p {
+		font-size: 30px;
+	}
+}
+@media screen and (min-width: 600px) {
+	.cardFront, .cardBack, .card {
+		height: 100px;
+		width: 100px;
+	}
+	.cardFront {
+		top: -100px;
+	}
+	#moves, #timer, #reset {
+		width: 25%;
+	}
+/*	#gameButtons {
+		margin-top: 5vh;
+	}*/
+	#gameButtons p {
+		font-size: 40px;
+	}
+
 }

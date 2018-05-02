@@ -15,7 +15,7 @@ function increaseTime(){
 		if(seconds <10){
 			seconds = `0${seconds}`;
 		}
-	document.querySelector(".	time").innerText = `${minutes}:${seconds}`
+	document.querySelector(".time").innerText = `${minutes}:${seconds}`
 	}
 }
 	const timerInterval = setInterval(increaseTime, 1000);
@@ -136,6 +136,7 @@ cardContain.addEventListener('click', function(e){
 					${document.getElementById('timer').innerText}`);
 				clearInterval(timerInterval);
 			}, 1000);
+			document.querySelector(".winner").classList.remove("noDisplay");
 		};
 
 		document.querySelector("#moves").innerText = `Number of Moves: ${moves}`;

@@ -188,11 +188,11 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 		//check for the correct number of stars
 		//if over 1 move go down to 2 stars
-		if(js.moves > 20 && js.moves <= 25){
+		if(js.moves > 15 && js.moves <= 22){
 			funcs.starCheck(".threeStars", ".twoStars");
 		}
 		//if over 3 moves go down to 1 star
-		else if (js.moves > 25 ){
+		else if (js.moves > 22 ){
 			funcs.starCheck(".twoStars", ".oneStar");
 		}
 

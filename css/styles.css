@@ -4,7 +4,7 @@
 	flex-wrap: wrap;
 	margin: 0 auto;
 }
-#moves, #timer {
+#moves, #timer, #stars {
 	background: pink;
 	padding: 1%;
 	width: 200px;
@@ -12,6 +12,17 @@
 	margin: 1% auto;
 	text-align: center;
 	font-family: sans-serif;
+}
+#stars {
+	color: yellow;
+	font-size: 30px;
+	text-shadow: 0 0 5px grey;
+}
+.noDisplay {
+	display: none;
+}
+.displayBlock {
+	display: block;
 }
 #cardsContainer {
 	background: yellow;

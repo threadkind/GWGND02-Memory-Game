@@ -1,5 +1,5 @@
 //variable to count the number of moves
-let moves = 0;
+let moves = 1;
 
 //timer
 let timer = 0;
@@ -19,6 +19,12 @@ function increaseTime(){
 	}
 }
 const timerInterval = setInterval(increaseTime, 1000);
+
+//star variables
+const threeStars = document.querySelector('.threeStars');
+const twoStars = document.querySelector('.twoStars');
+const oneStar = document.querySelector('.oneStar');
+const zeroStars = document.querySelector('.zeroStars');
 //*******************shuffle the cards........
 
 //card deck array
@@ -118,9 +124,33 @@ cardContain.addEventListener('click', function(e){
 			}, 1000);
 		};
 
+		document.querySelector("#moves").innerText = `Number of Moves: ${moves}`;
+		//if over 1 move go down to 2 stars
+		if(moves > 1 && moves <= 3){
+			threeStars.classList.add("noDisplay");
+			threeStars.classList.remove("displayBlock");
+			twoStars.classList.add("displayBlock");
+			twoStars.classList.remove("noDisplay");
+		}
+		//if over 3 moves go down to 1 star
+		else if (moves > 3 && moves <= 5){
+			twoStars.classList.add("noDisplay");
+			twoStars.classList.remove("displayBlock");
+			oneStar.classList.add("displayBlock");
+			oneStar.classList.remove("noDisplay");
+
+		}
+		//if over 5 moves go down to 0 stars
+		else if (moves > 5) {
+			oneStar.classList.add("noDisplay");
+			oneStar.classList.remove("displayBlock");
+			zeroStars.classList.add("displayBlock");
+			zeroStars.classList.remove("noDisplay");
+		}
+
 		firstCardClass = "blank"
 		moves++;
-		document.querySelector("#moves").innerText = `Number of Moves: ${moves}`
+
 	}
 
 });

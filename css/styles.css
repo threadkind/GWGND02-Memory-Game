@@ -1,4 +1,4 @@
-#overlay, #winner {
+#overlay, .winner {
 	z-index: 25;
 	position: fixed;
 	top: 0;
@@ -10,6 +10,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 #playButton{
 	color: black;
 	text-align: center;
@@ -19,7 +20,10 @@
 	cursor: pointer;
 	border-radius: 10px;
 }
+
 #congratulations {
+	width: 25%;
+	height: 200px;
 	background: yellow;
 	color: red;
 }

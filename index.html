@@ -6,30 +6,31 @@
     <title>Memory Game</title>
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
   </head>
   <body>
-    <nav></nav>
     <main>
+
       <div id="overlay">
         <div id="playButton">
-          Memory Game<br><br>
+          <p><span id="brain">🧠</span><br>Memory Game</p>
           <div id="play">▶</div>
           <div id="clickToPlay">Click to Play</div>
         </div>
       </div>
-<div class="winner noDisplay">
-  <div id="congratulations">
-    <span id="youWon">🏆 You Won! 🏆</span>
-    <div class="winStars">
-    </div> <!-- end of stars-->
-    <div id="gameTime"></div>
-    <span id="playQuestion">Would you like to play again?</span>
-    <button id="playAgain">Play Again</button>
-  </div> <!-- end of congratulations-->
-</div> <!-- end of winner-->
+
+      <div class="winner noDisplay">
+        <div id="congratulations">
+          <span id="youWon">🏆 You Won! 🏆</span>
+          <div class="winStars"></div>
+          <div id="gameTime"></div>
+          <span id="playQuestion">Would you like to play again?</span>
+          <button id="playAgain">Play Again</button>
+        </div>
+      </div>
+
       <div id="gameButtons">
-        <p>Memory Game</p>
+        <h1>🧠 Memory Game 🧠</h1>
         <div id="moves">Moves:<br>0</div>
         <div class="stars">
           <span class="threeStars displayBlock">★★★</span>
@@ -39,31 +40,14 @@
         <div id="timer">Time: <br><span class="time">0</span></div>
         <div id='reset'>Reset Game</div>
       </div>
+
       <div class="stopClick noDisplay"></div>
+
       <div id="cardsContainer">
+
+<!-- First Row of Cards -->
         <div class="row">
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
 
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-        </div>
-
-         <div class="row">
           <div class="card">
             <div class="cardBack"></div>
             <div class="cardFront"></div>
@@ -85,54 +69,87 @@
           </div>
         </div>
 
-                <div class="row">
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
+<!-- Second Row of Cards -->
+       <div class="row">
 
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
         </div>
 
-                <div class="row">
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
-
-          <div class="card">
-            <div class="cardBack"></div>
-            <div class="cardFront"></div>
-          </div>
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
         </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
       </div>
 
+<!-- Third Row of Cards -->
+
+      <div class="row">
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+      </div>
+
+<!-- Fourth Row of Cards -->
+
+      <div class="row">
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardBack"></div>
+          <div class="cardFront"></div>
+        </div>
+
+        </div>
+
+      </div>
 
     </main>
-    <footer></footer>
+
     <script src="js/scripts.js"></script>
   </body>
 </html>

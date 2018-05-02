@@ -49,6 +49,14 @@
 	font-size: 50px;
 }
 
+#playButton p {
+	font-size: 30px;
+}
+
+#brain {
+	font-size: 50px;
+}
+
 #play {
 	font-size: 70px;
 	width: 100px;
@@ -93,7 +101,7 @@
 	border-radius: 10px 10px 0 0;
 }
 
-#gameButtons p {
+#gameButtons h1 {
 	font-size: 20px;
 	width: 100%;
 	text-align: center;
@@ -251,6 +259,15 @@
 
 /* M E D I A    Q U E R I E S */
 @media screen and (min-width: 450px) {
+
+	#playButton p {
+		font-size: 40px;
+	}
+
+	#brain {
+		font-size: 60px;
+	}
+
 	.cardFront, .cardBack, .card {
 		height: 80px;
 		width: 80px;
@@ -260,11 +277,21 @@
 		top: -80px;
 	}
 
-	#gameButtons p {
+	#gameButtons h1 {
 		font-size: 30px;
 	}
+
 }
 @media screen and (min-width: 600px) {
+
+	#playButton p {
+		font-size: 50px;
+	}
+
+	#brain {
+		font-size: 80px;
+	}
+
 	.cardFront, .cardBack, .card {
 		height: 100px;
 		width: 100px;
@@ -278,7 +305,7 @@
 		width: 25%;
 	}
 
-	#gameButtons p {
+	#gameButtons h1 {
 		font-size: 40px;
 	}
 

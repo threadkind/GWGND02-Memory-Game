@@ -160,7 +160,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 				}//end of if stmt
 			}
 		//if all of the cards are matched
-		if(notMatched === 14){
+		if(notMatched === 0){
 			//display the winner pop up with the game data on it
 			setTimeout(function(){
 				const finalStars = document.querySelector(".stars").innerHTML;
@@ -179,11 +179,11 @@ dom.cardsContainer.addEventListener('click', function(e){
 		document.querySelector("#moves").innerText = `Moves:
 			${js.moves}`;
 		//if over 1 move go down to 2 stars
-		if(js.moves > 1 && js.moves <= 3){
+		if(js.moves > 20 && js.moves <= 25){
 			funcs.starCheck(".threeStars", ".twoStars");
 		}
 		//if over 3 moves go down to 1 star
-		else if (js.moves > 3 ){
+		else if (js.moves > 25 ){
 			funcs.starCheck(".twoStars", ".oneStar");
 		}
 		js.firstCardClass = "blank";

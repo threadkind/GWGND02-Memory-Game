@@ -85,7 +85,7 @@ cardContain.addEventListener('click', function(e){
 		//toggle css classes on the front and back of the cards to make them flip
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
-};
+
 	//if firstCard variable is blank, assign the card number to it
 	if(firstCardClass === "blank"){
 		firstCard = card;
@@ -139,24 +139,18 @@ cardContain.addEventListener('click', function(e){
 			twoStars.classList.remove("noDisplay");
 		}
 		//if over 3 moves go down to 1 star
-		else if (moves > 3 && moves <= 5){
+		else if (moves > 3 ){
 			twoStars.classList.add("noDisplay");
 			twoStars.classList.remove("displayBlock");
 			oneStar.classList.add("displayBlock");
 			oneStar.classList.remove("noDisplay");
 
 		}
-		//if over 5 moves go down to 0 stars
-		else if (moves > 5) {
-			oneStar.classList.add("noDisplay");
-			oneStar.classList.remove("displayBlock");
-			zeroStars.classList.add("displayBlock");
-			zeroStars.classList.remove("noDisplay");
-		}
 
 		firstCardClass = "blank"
 		moves++;
 
 	}
+	};
 
 });

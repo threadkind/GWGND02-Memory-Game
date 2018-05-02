@@ -4,7 +4,7 @@
 	flex-wrap: wrap;
 	margin: 0 auto;
 }
-#moves, #timer, #stars {
+#moves, #timer, #stars, #reset {
 	background: pink;
 	padding: 1%;
 	width: 200px;
@@ -23,6 +23,9 @@
 }
 .displayBlock {
 	display: block;
+}
+#reset {
+	cursor: pointer;
 }
 #cardsContainer {
 	background: yellow;

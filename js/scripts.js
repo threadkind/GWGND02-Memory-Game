@@ -25,6 +25,12 @@ const threeStars = document.querySelector('.threeStars');
 const twoStars = document.querySelector('.twoStars');
 const oneStar = document.querySelector('.oneStar');
 const zeroStars = document.querySelector('.zeroStars');
+
+//reset game
+function resetGame(){
+	location.reload();
+};
+document.getElementById('reset').addEventListener('click', resetGame);
 //*******************shuffle the cards........
 
 //card deck array

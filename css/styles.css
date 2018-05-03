@@ -13,6 +13,7 @@
 	font-family: var(--mainFont);
 }
 
+
 /* O V E R L A Y S   &   P O P   U P S */
 #overlay, .winner {
 	z-index: 25;
@@ -27,7 +28,7 @@
 	align-items: center;
 }
 
-#congratulations, #playButton {
+#congratulations, #play-button {
   text-align: center;
   display: grid;
   width: 75vw;
@@ -41,15 +42,19 @@
   box-shadow: 2px 2px 5px 5px var(--black);
 }
 
-#youWon {
+#you-won {
   font-size: 25px;
 }
 
-#playButton {
+.new-record {
+	color: var(--plum);
+}
+
+#play-button {
 	font-size: 50px;
 }
 
-#playButton p {
+#play-button p {
 	font-size: 30px;
 }
 
@@ -67,11 +72,11 @@
 	cursor: pointer;
 }
 
-#clickToPlay {
+#click-to-play {
 	font-size: 20px;
 }
 
-.stopClick {
+.stop-click {
 	position: fixed;
 	opacity: 0.2;
 	z-index: 1;
@@ -82,8 +87,9 @@
 	left: 0;
 }
 
+
 /* S O U N D  E F F E C T S*/
-#audioButton {
+#audio-button {
 	position: fixed;
 	font-size: 30px;
 	top: 10px;
@@ -92,12 +98,13 @@
 	border-radius: 50%;
 	box-shadow: 0 0 2px 2px var(--low-opacity-black);
 }
-#audioButton:active {
+#audio-button:active {
 	box-shadow: 0 0 0 0 var(--low-opacity-black);
 }
 
+
 /* G A M E   D A T A   P A N E L */
-#gameButtons, #cardsContainer {
+#game-buttons, #cards-container {
 	width: 85%;
 	max-width: 550px;
 	padding: 20px;
@@ -106,7 +113,7 @@
 	margin: 0 auto;
 }
 
-#gameButtons {
+#game-buttons {
 	background: var(--plum);
 	height: auto;
 	font-size: 20px;
@@ -115,7 +122,7 @@
 	border-radius: 10px 10px 0 0;
 }
 
-#gameButtons h1 {
+#game-buttons h1 {
 	font-size: 20px;
 	width: 100%;
 	text-align: center;
@@ -135,7 +142,7 @@
 	text-align: center;
 }
 
-.stars, .winStars {
+.stars, .win-stars {
 	height: 80px;
 	color: var(--yellow);
 	text-align: center;
@@ -147,7 +154,7 @@
 	width: 45%;
 }
 
-#playAgain, #reset {
+#play-again, #reset {
   border-radius: 30px;
   font-size: 20px;
   background: var(--plum);
@@ -156,11 +163,11 @@
   text-shadow: 2px 2px 10px var(--low-opacity-black);
 }
 
-.noDisplay {
+.no-display {
 	display: none !important;
 }
 
-.displayBlock {
+.display-block {
 	display: block;
 }
 
@@ -178,8 +185,9 @@
 	box-shadow: 0 0 0 var(--low-opacity-black);
 }
 
+
 /* M A I N   G A M E   B O A R D  */
-#cardsContainer {
+#cards-container {
 	background: var(--blue);
 	border-radius: 0 0 10px 10px;
 	height: 70vh;
@@ -195,7 +203,7 @@
 
 
 /* C A R D   S I Z E,  F L I P  &  D E S I G N */
-.cardFront, .cardBack, .card {
+.card-front, .card-back, .card {
 	height: 62px;
 	width: 62px;
 }
@@ -204,7 +212,7 @@
 	perspective: 1000px;
 }
 
-.cardBack {
+.card-back {
 	position: relative;
 	color: white;
 	background: url(../images/back.png);
@@ -214,7 +222,7 @@
 	transition: transform 0.2s;
 }
 
-.cardFront {
+.card-front {
 	position: relative;
 	background-size: cover;
 	color: white;
@@ -236,6 +244,7 @@
 	backface-visibility: hidden;
 	transition: transform 0.2s;
 }
+
 
 /* C A R D   I M A G E S */
 .card1{
@@ -271,10 +280,11 @@
 	background-size: cover;
 }
 
+
 /* M E D I A    Q U E R I E S */
 @media screen and (min-width: 450px) {
 
-	#playButton p {
+	#play-button p {
 		font-size: 40px;
 	}
 
@@ -282,23 +292,35 @@
 		font-size: 60px;
 	}
 
-	.cardFront, .cardBack, .card {
+	#you-won {
+		font-size: 40px;
+	}
+
+	#game-time {
+		font-size: 30px;
+	}
+
+	#play-question {
+		font-size: 25px;
+	}
+
+	.card-front, .card-back, .card {
 		height: 80px;
 		width: 80px;
 	}
 
-	.cardFront {
+	.card-front {
 		top: -80px;
 	}
 
-	#gameButtons h1 {
+	#game-buttons h1 {
 		font-size: 30px;
 	}
 
 }
 @media screen and (min-width: 600px) {
 
-	#playButton p {
+	#play-button p {
 		font-size: 50px;
 	}
 
@@ -306,12 +328,24 @@
 		font-size: 80px;
 	}
 
-	.cardFront, .cardBack, .card {
+	#you-won {
+		font-size: 50px;
+	}
+
+	.win-stars {
+		font-size: 80px;
+	}
+
+	#game-time {
+		font-size: 40px;
+	}
+
+	.card-front, .card-back, .card {
 		height: 100px;
 		width: 100px;
 	}
 
-	.cardFront {
+	.card-front {
 		top: -100px;
 	}
 
@@ -319,8 +353,9 @@
 		width: 25%;
 	}
 
-	#gameButtons h1 {
+	#game-buttons h1 {
 		font-size: 40px;
 	}
 
 }
+

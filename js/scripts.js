@@ -1,21 +1,22 @@
 const dom = {
 	time : document.querySelector('.time'),
-	gameButtons : document.querySelector('#gameButtons'),
-	playButton : document.getElementById('playButton'),
+	gameButtons : document.querySelector('#game-buttons'),
+	playButton : document.getElementById('play-button'),
 	overlay : document.getElementById('overlay'),
-	threeStars : document.querySelector('.threeStars'),
-	twoStars : document.querySelector('.twoStars'),
-	oneStar : document.querySelector('.oneStar'),
+	threeStars : document.querySelector('.three-stars'),
+	twoStars : document.querySelector('.two-stars'),
+	oneStar : document.querySelector('.one-star'),
 	reset : document.getElementById('reset'),
 	cards : document.querySelectorAll('.card'),
-	cardsContainer : document.getElementById('cardsContainer'),
-	playAgain : document.querySelector('#playAgain'),
+	cardsContainer : document.getElementById('cards-container'),
+	playAgain : document.querySelector('#play-again'),
 	winner : document.querySelector('.winner'),
-	stopClick : document.querySelector('.stopClick'),
-	audioButton : document.querySelector('#audioButton'),
-	soundEffects : document.querySelector('.soundEffects'),
-	noSound : document.querySelector('.noSound'),
-	gameSound : document.querySelector('#gameSound')
+	stopClick : document.querySelector('.stop-click'),
+	audioButton : document.querySelector('#audio-button'),
+	soundEffects : document.querySelector('.sound-effects'),
+	noSound : document.querySelector('.no-sound'),
+	gameSound : document.querySelector('#game-sound'),
+	newRecord : document.querySelector('.new-record')
 };
 
 const js = {
@@ -30,46 +31,51 @@ const js = {
  	firstCardClass : 'blank',
  	secondCardClass : 'blank',
  	moves : 1,
- 	timer : 0
-};
+ 	timer : 0,
+ 	currentCalcTime : "0"
+ };
 
 const funcs = {
 	increaseTime : function (){
-			timer++;
-			if(timer < 60){
-				dom.time.innerText = timer;
-			}
-			else {
-				const minutes = Math.floor(timer/60);
-				let seconds = timer - (minutes * 60);
-				if(seconds <10){
-					seconds = `0${seconds}`;
+			js.timer++;
+			funcs.calcTime(js.timer);
+			dom.time.innerText = js.currentCalcTime;
+		},
+	calcTime : function(timeToCalc){
+			if(timeToCalc < 60){
+				js.currentCalcTime = `${timeToCalc}`;
 				}
-			dom.time.innerText = `${minutes}:${seconds}`
-			}
+			else {
+				const minutes = Math.floor(timeToCalc/60);
+				let seconds = timeToCalc - (minutes * 60);
+				if(seconds < 10){
+					seconds = `0${seconds}`;
+					}
+				js.currentCalcTime = `${minutes}:${seconds}`;
+				}
 		},
 	resetGame : function (){
 			location.reload();
 		},
 	clickToPlay : function(){
-			timer = 0;
-			dom.overlay.classList.add('noDisplay');
+			js.timer = 0;
+			dom.overlay.classList.add('no-display');
 			dom.time.innerText = 0;
 			setTimeout(function(){
-				dom.time.classList.remove('noDisplay')}, 500);
+				dom.time.classList.remove('no-display')}, 500);
 		},
 	starCheck : function(currentStars, newStars){
-			document.querySelector(currentStars).classList.remove('displayBlock');
-			document.querySelector(currentStars).classList.add('noDisplay');
-			document.querySelector(newStars).classList.remove('noDisplay');
-			document.querySelector(newStars).classList.add('displayBlock');
+			document.querySelector(currentStars).classList.remove('display-block');
+			document.querySelector(currentStars).classList.add('no-display');
+			document.querySelector(newStars).classList.remove('no-display');
+			document.querySelector(newStars).classList.add('display-block');
 		},
 	stopClickNoDisplay : function(){
-			dom.stopClick.classList.add('noDisplay');
+			dom.stopClick.classList.add('no-display');
 		},
 	toggleSound : function(){
-			dom.soundEffects.classList.toggle('noDisplay');
-			dom.noSound.classList.toggle('noDisplay');
+			dom.soundEffects.classList.toggle('no-display');
+			dom.noSound.classList.toggle('no-display');
 		},
 	playGameSound : function(){
 			dom.gameSound.play();
@@ -127,7 +133,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 	if (card.classList[0] === 'card' && card.classList[1] != 'matched') {
 
 		//toggle css classes on the front and back of the cards to make them flip so we can see the front of the card and add overlay to page so player doesn't click on next card too soon
-		dom.stopClick.classList.remove('noDisplay');
+		dom.stopClick.classList.remove('no-display');
 		setTimeout(funcs.stopClickNoDisplay, 500)
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
@@ -147,17 +153,18 @@ dom.cardsContainer.addEventListener('click', function(e){
 			card.classList.add('selected');
 
 			//check to see if the cards match and if they do add a 'matched' class
+			const selected = document.querySelectorAll('.selected');
+
 			if(js.firstCardClass === js.secondCardClass && js.firstCardNumber != js.secondCardNumber ){
 
-				//if the cards match, add a 'matched' class to the cards
-				const selected = document.querySelectorAll('.selected');
-
+				//add correct sound if audio is on
 				if(dom.soundEffects.classList.item(1) === null){
 					funcs.playGameSound();
 				}
+
+				//add matched class
 				selected[0].classList.add('matched');
 				selected[1].classList.add('matched');
-
 			}
 
 			//create counter for the number of cards that are not matched
@@ -171,7 +178,8 @@ dom.cardsContainer.addEventListener('click', function(e){
 				if(dom.cards[k].classList[1] != 'matched'){
 					//...increase the matched counter
 					notMatched++;
-					//set a timeout function to flip the cards back around after 1 second if they don't match
+
+					//set a timeout function to flip the cards back around after 0.8 seconds if they don't match
 					setTimeout(function(){
 						dom.cards[k].children[1].classList.remove('frontFlipped');
 						dom.cards[k].children[0].classList.remove('backFlipped');
@@ -179,23 +187,36 @@ dom.cardsContainer.addEventListener('click', function(e){
 				}//end of if stmt
 			}//end of for
 
-			//if all of the cards are matched
-			if(notMatched === 0){
-				//display the winner pop up with the game data on it
-				setTimeout(function(){
-					clearInterval(timerInterval); //stop timer
+				//if all of the cards are matched
+				if(notMatched === 14){
+					//display the winner pop up with the game data on it
+					setTimeout(function(){
+						clearInterval(timerInterval); //stop timer
+						const finalTime = document.querySelector('.time').innerText;
+						const finalStars = document.querySelector('.stars').innerHTML; //add final stars
 
-					const finalStars = document.querySelector('.stars').innerHTML; //add final stars
+						//check for best time with local storage
+						const localTime = localStorage.getItem('bestTime');
+						funcs.calcTime(localTime);
 
-					document.querySelector('#gameTime').innerText =
-					`${document.getElementById('timer').innerText}`; //add final time
+						document.querySelector('.win-stars').innerHTML = finalStars;
+						dom.playAgain.addEventListener('click', funcs.resetGame); //add play again button
 
-					document.querySelector('.winStars').innerHTML = finalStars;
-					dom.playAgain.addEventListener('click', funcs.resetGame); //add play again button
+						//check current time against what is stored in local storage
+						if(localTime === null || js.timer < localTime){
+							document.querySelector('#game-time').innerText = `Your Time: ${finalTime}
+								Best Time: ${finalTime}`; //display final and best times
+							localStorage.setItem('bestTime', js.timer); // set local storage to new record
+							dom.newRecord.classList.remove('no-display'); //show new record banner
+						}
+						else {
+							document.querySelector('#game-time').innerText = `Your time: ${finalTime}
+							Best Time: ${js.currentCalcTime}`; //show current and best scores on winner popup
+						}
 
-					dom.winner.classList.remove('noDisplay'); //show winner popup
+						dom.winner.classList.remove('no-display'); //show winner popup
 
-				}, 300);
+					}, 300);
 
 		};
 
@@ -207,11 +228,11 @@ dom.cardsContainer.addEventListener('click', function(e){
 		//check for the correct number of stars
 		//if over 1 move go down to 2 stars
 		if(js.moves > 15 && js.moves <= 22){
-			funcs.starCheck('.threeStars', '.twoStars');
+			funcs.starCheck('.three-stars', '.two-stars');
 		}
 		//if over 3 moves go down to 1 star
 		else if (js.moves > 22 ){
-			funcs.starCheck('.twoStars', '.oneStar');
+			funcs.starCheck('.two-stars', '.one-star');
 		}
 
 		//reset firstCardClass

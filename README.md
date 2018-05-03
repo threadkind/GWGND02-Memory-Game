@@ -30,7 +30,7 @@ Click on different cards to try to find all the matches.
 
 When you have matched up all of the pairs you will win the game.
 
-When you win the game there will be an overlay congratulating you and giving you data about the game you just played. You will see the time it took to complete the game and how many stars you were awarded (which is based on the number of moves you took to win the game - the lower the moves the more stars you will be awarded).
+When you win the game there will be an overlay congratulating you and giving you data about the game you just played. You will see the time it took to complete the game and how many stars you were awarded (which is based on the number of moves you took to win the game - the lower the moves the more stars you will be awarded). The best time is stored in local storage so the game will tell you if you got a new time record.
 
 On the winning overlay there will be a button to allow you to reset the game and play again.
 

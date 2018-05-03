@@ -16,7 +16,7 @@ The app incorporates responsive design, so it is able to be played across mobile
 
 
 ## How to Play
-When you load the page there will be an overlay on the screen. Click on the play button to start the game.
+When you load the page there will be an overlay on the screen. There is a choice of 3 card decks to choose from: images, numbers and colors. Choose a deck to start the game.
 
 When you click to play the overlay will be removed, the game board is revealed and the time will start.
 

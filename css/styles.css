@@ -82,6 +82,20 @@
 	left: 0;
 }
 
+/* S O U N D  E F F E C T S*/
+#audioButton {
+	position: fixed;
+	font-size: 30px;
+	top: 10px;
+	right: 10px;
+	background: var(--white);
+	border-radius: 50%;
+	box-shadow: 0 0 2px 2px var(--lowOpacityBlack);
+}
+#audioButton:active {
+	box-shadow: 0 0 0 0 var(--lowOpacityBlack);
+}
+
 /* G A M E   D A T A   P A N E L */
 #gameButtons, #cardsContainer {
 	width: 85%;
@@ -160,7 +174,7 @@
 	padding: 1.5%;
 }
 
-#reset:click {
+#reset:active {
 	box-shadow: 0 0 0 var(--lowOpacityBlack);
 }
 

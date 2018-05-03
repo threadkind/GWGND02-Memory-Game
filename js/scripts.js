@@ -11,7 +11,11 @@ const dom = {
 	cardsContainer : document.getElementById('cardsContainer'),
 	playAgain : document.querySelector("#playAgain"),
 	winner : document.querySelector(".winner"),
-	stopClick : document.querySelector(".stopClick")
+	stopClick : document.querySelector(".stopClick"),
+	audioButton : document.querySelector("#audioButton"),
+	soundEffects : document.querySelector(".soundEffects"),
+	noSound : document.querySelector(".noSound"),
+	gameSound : document.querySelector("#gameSound")
 }
 
 const js = {
@@ -62,6 +66,13 @@ const funcs = {
 		},
 	stopClickNoDisplay : function(){
 			dom.stopClick.classList.add('noDisplay');
+		},
+	toggleSound : function(){
+			dom.soundEffects.classList.toggle("noDisplay");
+			dom.noSound.classList.toggle("noDisplay");
+		},
+	playGameSound : function(){
+			dom.gameSound.play();
 		}
 }
 
@@ -79,6 +90,8 @@ dom.playButton.addEventListener("click", funcs.clickToPlay);
 //when reset button is clicked reset the game
 dom.reset.addEventListener('click', funcs.resetGame);
 
+//when sound button is pressed toggle sound
+dom.audioButton.addEventListener('click', funcs.toggleSound);
 
 //**********SHUFFLE THE CARDS**********
 //for loop to....
@@ -137,6 +150,10 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 				//if the cards match, add a 'matched' class to the cards
 				const selected = document.querySelectorAll('.selected');
+
+				if(dom.soundEffects.classList.item(1) === null){
+					funcs.playGameSound();
+				}
 				selected[0].classList.add('matched');
 				selected[1].classList.add('matched');
 

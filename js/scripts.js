@@ -128,7 +128,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 		//toggle css classes on the front and back of the cards to make them flip so we can see the front of the card and add overlay to page so player doesn't click on next card too soon
 		dom.stopClick.classList.remove('noDisplay');
-		setTimeout(funcs.stopClickNoDisplay, 600)
+		setTimeout(funcs.stopClickNoDisplay, 500)
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
 
@@ -175,7 +175,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 					setTimeout(function(){
 						dom.cards[k].children[1].classList.remove('frontFlipped');
 						dom.cards[k].children[0].classList.remove('backFlipped');
-						}, 1000)
+						}, 800)
 				}//end of if stmt
 			}//end of for
 
@@ -195,7 +195,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 					dom.winner.classList.remove('noDisplay'); //show winner popup
 
-				}, 500);
+				}, 300);
 
 		};
 

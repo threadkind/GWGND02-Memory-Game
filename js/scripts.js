@@ -1,5 +1,8 @@
 const dom = {
 	time : document.querySelector('.time'),
+	gameInstructions : document.querySelector('.game-instructions'),
+	howTitle : document.querySelector('.how-title'),
+	howFull : document.querySelector('.how-full'),
 	gameButtons : document.querySelector('#game-buttons'),
 	imagePack : document.querySelector('.image-pack'),
 	numberPack : document.querySelector('.number-pack'),
@@ -22,7 +25,7 @@ const dom = {
 };
 
 const js = {
-	chosenCardDeck : "images",
+	chosenCardDeck : "none",
 	cardDeck : ['card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8'],
 	number : ['1', '1', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '2', '2', '2', '2'],
 	shuffledDeck : [],
@@ -95,7 +98,36 @@ const funcs = {
 					pairOfCards[c].style.backgroundImage = `url(images/${js.chosenCardDeck}/front${card}.png)`;
 				}
 			}
-	}
+		},
+	addRemoveClass : function(element, classToAdd, classToRemove){
+			element.classList.add(classToAdd);
+			element.classList.remove(classToRemove);
+		},
+	minimizeHelp : function(){
+			funcs.addRemoveClass(dom.gameInstructions, 'how-minimized', 'how-open' );
+			funcs.addRemoveClass(dom.gameInstructions, 'how-minimized', 'how-play' );
+
+			if(dom.howTitle.classList.contains('no-display') === false){
+				dom.howTitle.classList.add('no-display')
+			};
+			;
+
+			if(dom.howFull.classList.contains('opacity-zero')){
+				funcs.addRemoveClass(dom.howFull, 'no-display', 'opacity-zero');
+			}
+			else {
+				funcs.addRemoveClass(dom.howFull, "no-display", 'opacity-one');
+
+			}
+		},
+	openHelp : function(){
+			funcs.addRemoveClass(dom.gameInstructions, "how-open", dom.gameInstructions.classList[1]);
+			if (dom.howTitle.classList.contains('no-display')){
+				dom.howTitle.classList.remove('no-display')
+			}
+			funcs.addRemoveClass(dom.howFull, "opacity-zero", "no-display");
+			setTimeout(funcs.addRemoveClass(dom.howFull, "opacity-one", "opacity-zero"), 1500);
+		}
 };
 
 //if a user has their device in portrait mode and it is wider than 600px add some margin to the top
@@ -103,18 +135,33 @@ if(window.innerHeight > window.innerWidth && window.innerWidth > 600){
     dom.gameButtons.style.marginTop = '5vh';
 }
 
+//code functionality for help menu
+dom.gameInstructions.addEventListener('click', function(){
+	//if the help screen is open, minimize it
+	if (dom.gameInstructions.classList.contains('how-open')){
+		funcs.minimizeHelp();
+	}
+	//if help screen is closed, open it
+	else {
+		funcs.openHelp();
+	};
+} )
+
 //print result of increaseTime function on page every second to keep track of time game is played
 const timerInterval = setInterval(funcs.increaseTime, 1000);
 
-//when deck is selected, apply correct deck to cards, update remove overlay, show gameboard and start game
+//when deck is selected, apply correct deck to cards, update remove overlay, show gameboard, start game and minimize help
 dom.imagePack.addEventListener('click', function(){
 	funcs.clickToPlay('images');
+	funcs.minimizeHelp();
 });
 dom.numberPack.addEventListener('click', function(){
 	funcs.clickToPlay('numbers');
+	funcs.minimizeHelp();
 });
 dom.colorPack.addEventListener('click', function(){
 	funcs.clickToPlay('colors');
+	funcs.minimizeHelp();
 });
 
 //when reset button is clicked reset the game

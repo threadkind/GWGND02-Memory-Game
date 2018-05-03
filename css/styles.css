@@ -6,11 +6,12 @@
   --blue: #2274a5;
   --yellow: #eac435;
   --plum: #950952;
-  --mainFont: 'Titan One', cursive;
+  --main-font: 'Titan One', cursive;
+  --secondary-font: Arial, sans-serif;
 }
 
 * {
-	font-family: var(--mainFont);
+	font-family: var(--main-font);
 }
 
 
@@ -69,6 +70,7 @@
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
+
 #card-packs p {
 	text-align: center;
 	font-size: 18px;
@@ -84,6 +86,7 @@
 	border-radius: 10px;
 	height: 25px;
 }
+
 .packs:active {
 	box-shadow: 0 0 2px var(--low-opacity-black);
 }
@@ -114,9 +117,10 @@
 }
 
 
-/* S O U N D  E F F E C T S*/
+/* S E T T I N G S */
 #audio-button {
 	position: fixed;
+	padding: 6px;
 	font-size: 30px;
 	top: 10px;
 	right: 10px;
@@ -124,10 +128,63 @@
 	border-radius: 50%;
 	box-shadow: 0 0 2px 2px var(--low-opacity-black);
 }
+
 #audio-button:active {
 	box-shadow: 0 0 0 0 var(--low-opacity-black);
 }
 
+.game-instructions {
+	padding: 6px;
+	position: fixed;
+	font-size: 30px;
+	background: var(--white);
+	box-shadow: 0 0 2px 2px var(--low-opacity-black);
+	z-index: 26;
+	cursor: pointer;
+	text-align: center;
+	transition: all 1s;
+}
+.how-open {
+	left: 10vw;
+	top: 5vw;
+	width: 80vw;
+	height: auto;
+	border-radius: 10px;
+	transition: all 1s;
+}
+
+.how-title {
+	font-size: 18px;
+}
+
+.how-minimized {
+	border-radius: 50%;
+	top: 80px;
+	right: 10px;
+	transition: all 1s;
+}
+
+.how-play {
+	border-radius: 10px;
+	width: 200px;
+	left: calc(50% - 100px);
+	transition: all 1s;
+}
+
+.how-full {
+	font-family: var(--secondary-font);
+	font-size: 20px;
+	padding: 2%;
+}
+
+.opacity-one {
+	opacity: 1;
+	transition: all 1s;
+}
+.opacity-zero {
+	opacity: 0;
+	transition: all 1s;
+}
 
 /* G A M E   D A T A   P A N E L */
 #game-buttons, #cards-container {

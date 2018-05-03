@@ -35,7 +35,7 @@
   max-width: 500px;
   height: 60vh;
   border-radius: 10px;
-  padding: 5%;
+  padding: 0 5% 5%;
 	background: var(--white);
 	color: var(--blue);
   font-size: 18px;
@@ -54,12 +54,38 @@
 	font-size: 50px;
 }
 
-#play-button p {
+#play-button h1 {
 	font-size: 30px;
 }
 
 #brain {
 	font-size: 50px;
+}
+
+#card-packs {
+	text-align: center;
+	font-size: 18px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+#card-packs p {
+	text-align: center;
+	font-size: 18px;
+	width: 100%;
+}
+
+.packs {
+	cursor: pointer;
+	background: var(--plum);
+	color: var(--yellow);
+	box-shadow: 2px 2px 5px var(--low-opacity-black);
+	padding: 3%;
+	border-radius: 10px;
+	height: 25px;
+}
+.packs:active {
+	box-shadow: 0 0 2px var(--low-opacity-black);
 }
 
 #play {
@@ -246,46 +272,15 @@
 }
 
 
-/* C A R D   I M A G E S */
-.card1{
-	background: url(../images/front1.png);
-	background-size: cover;
-}
-.card2{
-	background: url(../images/front2.png);
-	background-size: cover;
-}
-.card3{
-	background: url(../images/front3.png);
-	background-size: cover;
-}
-.card4{
-	background: url(../images/front4.png);
-	background-size: cover;
-}
-.card5{
-	background: url(../images/front5.png);
-	background-size: cover;
-}
-.card6{
-	background: url(../images/front6.png);
-	background-size: cover;
-}
-.card7{
-	background: url(../images/front7.png);
-	background-size: cover;
-}
-.card8{
-	background: url(../images/front8.png);
-	background-size: cover;
-}
-
-
 /* M E D I A    Q U E R I E S */
 @media screen and (min-width: 450px) {
 
-	#play-button p {
+	#play-button h1 {
 		font-size: 40px;
+	}
+
+	#card-packs p {
+	font-size: 24px;
 	}
 
 	#brain {
@@ -294,6 +289,10 @@
 
 	#you-won {
 		font-size: 40px;
+	}
+
+	.new-record {
+		font-size: 24px;
 	}
 
 	#game-time {
@@ -320,8 +319,12 @@
 }
 @media screen and (min-width: 600px) {
 
-	#play-button p {
+	#play-button h1 {
 		font-size: 50px;
+	}
+
+	#card-packs p {
+		font-size: 30px;
 	}
 
 	#brain {
@@ -330,6 +333,10 @@
 
 	#you-won {
 		font-size: 50px;
+	}
+
+	.new-record {
+		font-size: 30px;
 	}
 
 	.win-stars {

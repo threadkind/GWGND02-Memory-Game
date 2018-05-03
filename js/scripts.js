@@ -1,7 +1,9 @@
 const dom = {
 	time : document.querySelector('.time'),
 	gameButtons : document.querySelector('#game-buttons'),
-	playButton : document.getElementById('play-button'),
+	imagePack : document.querySelector('.image-pack'),
+	numberPack : document.querySelector('.number-pack'),
+	colorPack : document.querySelector('.color-pack'),
 	overlay : document.getElementById('overlay'),
 	threeStars : document.querySelector('.three-stars'),
 	twoStars : document.querySelector('.two-stars'),
@@ -20,6 +22,7 @@ const dom = {
 };
 
 const js = {
+	chosenCardDeck : "images",
 	cardDeck : ['card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8'],
 	number : ['1', '1', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '2', '2', '2', '2'],
 	shuffledDeck : [],
@@ -57,12 +60,15 @@ const funcs = {
 	resetGame : function (){
 			location.reload();
 		},
-	clickToPlay : function(){
+	clickToPlay : function(gamePack){
 			js.timer = 0;
 			dom.overlay.classList.add('no-display');
 			dom.time.innerText = 0;
 			setTimeout(function(){
 				dom.time.classList.remove('no-display')}, 500);
+			js.chosenCardDeck = gamePack;
+
+			funcs.updateCardPack();
 		},
 	starCheck : function(currentStars, newStars){
 			document.querySelector(currentStars).classList.remove('display-block');
@@ -79,7 +85,17 @@ const funcs = {
 		},
 	playGameSound : function(){
 			dom.gameSound.play();
-		}
+		},
+	updateCardPack : function(){
+			for (let card = 1; card <= 8; card++){
+				const cardNumber = `.card${card}`;
+				const pairOfCards = document.querySelectorAll(cardNumber);
+
+				for (let c = 0; c < pairOfCards.length; c++){
+					pairOfCards[c].style.backgroundImage = `url(images/${js.chosenCardDeck}/front${card}.png)`;
+				}
+			}
+	}
 };
 
 //if a user has their device in portrait mode and it is wider than 600px add some margin to the top
@@ -90,8 +106,16 @@ if(window.innerHeight > window.innerWidth && window.innerWidth > 600){
 //print result of increaseTime function on page every second to keep track of time game is played
 const timerInterval = setInterval(funcs.increaseTime, 1000);
 
-//when playButton is clicked, remove overlay, show gameboard and start game
-dom.playButton.addEventListener('click', funcs.clickToPlay);
+//when deck is selected, apply correct deck to cards, update remove overlay, show gameboard and start game
+dom.imagePack.addEventListener('click', function(){
+	funcs.clickToPlay('images');
+});
+dom.numberPack.addEventListener('click', function(){
+	funcs.clickToPlay('numbers');
+});
+dom.colorPack.addEventListener('click', function(){
+	funcs.clickToPlay('colors');
+});
 
 //when reset button is clicked reset the game
 dom.reset.addEventListener('click', funcs.resetGame);
@@ -116,7 +140,6 @@ for (let i = (js.cardDeck.length - 1); i >= 0; i--){
 for (let j = 0; j < dom.cards.length; j++){
 	dom.cards[j].children[1].classList.add(js.shuffledDeck[j], js.shuffledNumber[j]);
 }
-
 //cards are now randomly assigned on the screen
 //********** END OF CARD SHUFFLE**********
 
@@ -188,7 +211,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 			}//end of for
 
 				//if all of the cards are matched
-				if(notMatched === 14){
+				if(notMatched === 0){
 					//display the winner pop up with the game data on it
 					setTimeout(function(){
 						clearInterval(timerInterval); //stop timer

@@ -1,37 +1,37 @@
 const dom = {
-	time : document.querySelector(".time"),
-	gameButtons : document.querySelector("#gameButtons"),
-	playButton : document.getElementById("playButton"),
-	overlay : document.getElementById("overlay"),
+	time : document.querySelector('.time'),
+	gameButtons : document.querySelector('#gameButtons'),
+	playButton : document.getElementById('playButton'),
+	overlay : document.getElementById('overlay'),
 	threeStars : document.querySelector('.threeStars'),
 	twoStars : document.querySelector('.twoStars'),
 	oneStar : document.querySelector('.oneStar'),
 	reset : document.getElementById('reset'),
 	cards : document.querySelectorAll('.card'),
 	cardsContainer : document.getElementById('cardsContainer'),
-	playAgain : document.querySelector("#playAgain"),
-	winner : document.querySelector(".winner"),
-	stopClick : document.querySelector(".stopClick"),
-	audioButton : document.querySelector("#audioButton"),
-	soundEffects : document.querySelector(".soundEffects"),
-	noSound : document.querySelector(".noSound"),
-	gameSound : document.querySelector("#gameSound")
-}
+	playAgain : document.querySelector('#playAgain'),
+	winner : document.querySelector('.winner'),
+	stopClick : document.querySelector('.stopClick'),
+	audioButton : document.querySelector('#audioButton'),
+	soundEffects : document.querySelector('.soundEffects'),
+	noSound : document.querySelector('.noSound'),
+	gameSound : document.querySelector('#gameSound')
+};
 
 const js = {
 	cardDeck : ['card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8'],
 	number : ['1', '1', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '2', '2', '2', '2'],
 	shuffledDeck : [],
 	shuffledNumber : [],
-	firstCard : "blank",
- 	secondCard : "blank",
- 	firstCardNumber : "blank",
- 	secondCardNumber : "blank",
- 	firstCardClass : "blank",
- 	secondCardClass : "blank",
+	firstCard : 'blank',
+ 	secondCard : 'blank',
+ 	firstCardNumber : 'blank',
+ 	secondCardNumber : 'blank',
+ 	firstCardClass : 'blank',
+ 	secondCardClass : 'blank',
  	moves : 1,
  	timer : 0
-}
+};
 
 const funcs = {
 	increaseTime : function (){
@@ -56,36 +56,36 @@ const funcs = {
 			dom.overlay.classList.add('noDisplay');
 			dom.time.innerText = 0;
 			setTimeout(function(){
-				dom.time.classList.remove("noDisplay")}, 500);
+				dom.time.classList.remove('noDisplay')}, 500);
 		},
 	starCheck : function(currentStars, newStars){
-			document.querySelector(currentStars).classList.remove("displayBlock");
-			document.querySelector(currentStars).classList.add("noDisplay");
-			document.querySelector(newStars).classList.remove("noDisplay");
-			document.querySelector(newStars).classList.add("displayBlock");
+			document.querySelector(currentStars).classList.remove('displayBlock');
+			document.querySelector(currentStars).classList.add('noDisplay');
+			document.querySelector(newStars).classList.remove('noDisplay');
+			document.querySelector(newStars).classList.add('displayBlock');
 		},
 	stopClickNoDisplay : function(){
 			dom.stopClick.classList.add('noDisplay');
 		},
 	toggleSound : function(){
-			dom.soundEffects.classList.toggle("noDisplay");
-			dom.noSound.classList.toggle("noDisplay");
+			dom.soundEffects.classList.toggle('noDisplay');
+			dom.noSound.classList.toggle('noDisplay');
 		},
 	playGameSound : function(){
 			dom.gameSound.play();
 		}
-}
+};
 
 //if a user has their device in portrait mode and it is wider than 600px add some margin to the top
 if(window.innerHeight > window.innerWidth && window.innerWidth > 600){
-    dom.gameButtons.style.marginTop = "5vh";
+    dom.gameButtons.style.marginTop = '5vh';
 }
 
 //print result of increaseTime function on page every second to keep track of time game is played
 const timerInterval = setInterval(funcs.increaseTime, 1000);
 
 //when playButton is clicked, remove overlay, show gameboard and start game
-dom.playButton.addEventListener("click", funcs.clickToPlay);
+dom.playButton.addEventListener('click', funcs.clickToPlay);
 
 //when reset button is clicked reset the game
 dom.reset.addEventListener('click', funcs.resetGame);
@@ -106,10 +106,11 @@ for (let i = (js.cardDeck.length - 1); i >= 0; i--){
 	js.number.splice(random, 1);
 }
 
-//for loop to assign a shuffled class and number to each card on page
+//loop to assign a shuffled class and number to each card on page
 for (let j = 0; j < dom.cards.length; j++){
 	dom.cards[j].children[1].classList.add(js.shuffledDeck[j], js.shuffledNumber[j]);
 }
+
 //cards are now randomly assigned on the screen
 //********** END OF CARD SHUFFLE**********
 
@@ -132,16 +133,16 @@ dom.cardsContainer.addEventListener('click', function(e){
 		back.classList.toggle('backFlipped');
 
 		//if firstCard variable is blank, assign the card number to it and add other info about card to their variables
-		if(js.firstCardClass === "blank"){
+		if(js.firstCardClass === 'blank'){
 			js.firstCard = card;
-			js.firstCardNumber = card.children[1].classList[2]
+			js.firstCardNumber = card.children[1].classList[2];
 			js.firstCardClass = card.children[1].classList[1];
 			card.classList.add('selected');
 		}
 		//otherwise assign the card number (and other variables) to the secondCard
 		else{
 			js.secondCard = card;
-			js.secondCardNumber = card.children[1].classList[2]
+			js.secondCardNumber = card.children[1].classList[2];
 			js.secondCardClass = card.children[1].classList[1];
 			card.classList.add('selected');
 
@@ -167,7 +168,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 				//deselect all cards to start next turn
 				dom.cards[k].classList.remove('selected');
 				//if the card does not have the matched class...
-				if(dom.cards[k].classList[1] != "matched"){
+				if(dom.cards[k].classList[1] != 'matched'){
 					//...increase the matched counter
 					notMatched++;
 					//set a timeout function to flip the cards back around after 1 second if they don't match
@@ -184,15 +185,15 @@ dom.cardsContainer.addEventListener('click', function(e){
 				setTimeout(function(){
 					clearInterval(timerInterval); //stop timer
 
-					const finalStars = document.querySelector(".stars").innerHTML; //add final stars
+					const finalStars = document.querySelector('.stars').innerHTML; //add final stars
 
-					document.querySelector("#gameTime").innerText =
+					document.querySelector('#gameTime').innerText =
 					`${document.getElementById('timer').innerText}`; //add final time
 
-					document.querySelector(".winStars").innerHTML = finalStars;
-					dom.playAgain.addEventListener("click", funcs.resetGame); //add play again button
+					document.querySelector('.winStars').innerHTML = finalStars;
+					dom.playAgain.addEventListener('click', funcs.resetGame); //add play again button
 
-					dom.winner.classList.remove("noDisplay"); //show winner popup
+					dom.winner.classList.remove('noDisplay'); //show winner popup
 
 				}, 500);
 
@@ -200,21 +201,21 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 		//whether cards are matched or not...
 		//show moves on page
-		document.querySelector("#moves").innerText = `Moves:
+		document.querySelector('#moves').innerText = `Moves:
 			${js.moves}`;
 
 		//check for the correct number of stars
 		//if over 1 move go down to 2 stars
 		if(js.moves > 15 && js.moves <= 22){
-			funcs.starCheck(".threeStars", ".twoStars");
+			funcs.starCheck('.threeStars', '.twoStars');
 		}
 		//if over 3 moves go down to 1 star
 		else if (js.moves > 22 ){
-			funcs.starCheck(".twoStars", ".oneStar");
+			funcs.starCheck('.twoStars', '.oneStar');
 		}
 
 		//reset firstCardClass
-		js.firstCardClass = "blank";
+		js.firstCardClass = 'blank';
 
 		js.moves++;
 	}

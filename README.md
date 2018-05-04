@@ -18,6 +18,8 @@ The app incorporates responsive design, so it is able to be played across mobile
 ## How to Play
 When you load the page there will be an overlay on the screen. There is a choice of 3 card decks to choose from: images, numbers and colors. Choose a deck to start the game.
 
+There is a help function with instructions on how to play the game and also the option to turn off the audio. The settings are in the top right section of the screen.
+
 When you click to play the overlay will be removed, the game board is revealed and the time will start.
 
 Click on a card to turn it over and see what image is on it. Click a second card to see if you can find a match.
@@ -40,7 +42,7 @@ This game is written in HTML, CSS & Javascript. No additional libraries/framewor
 
 The game uses [Google Font: Titan One](https://fonts.google.com/specimen/Titan+One).
 
-All images used in the game were created by Amy Winne.
+All images used in the game were created by the author.
 
 
 ## Author

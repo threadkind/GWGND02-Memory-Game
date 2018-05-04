@@ -38,9 +38,11 @@ On the winning overlay there will be a button to allow you to reset the game and
 
 
 ## Dependancies
-This game is written in HTML, CSS & Javascript. No additional libraries/frameworks/templates were used in its creation.
+This game is written in HTML, CSS & Javascript. No additional libraries/frameworks were used in its creation.
 
 The game uses [Google Font: Titan One](https://fonts.google.com/specimen/Titan+One).
+
+[Autoprefixer](https://autoprefixer.github.io/) was used to add prefixes to the CSS.
 
 All images used in the game were created by the author.
 

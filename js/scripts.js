@@ -4,6 +4,7 @@ const dom = {
 	howTitle : document.querySelector('.how-title'),
 	howFull : document.querySelector('.how-full'),
 	gameButtons : document.querySelector('#game-buttons'),
+	cardPacks : document.querySelector('#card-packs'),
 	imagePack : document.querySelector('.image-pack'),
 	numberPack : document.querySelector('.number-pack'),
 	colorPack : document.querySelector('.color-pack'),
@@ -74,10 +75,13 @@ const funcs = {
 			funcs.updateCardPack();
 		},
 	starCheck : function(currentStars, newStars){
-			document.querySelector(currentStars).classList.remove('display-block');
-			document.querySelector(currentStars).classList.add('no-display');
-			document.querySelector(newStars).classList.remove('no-display');
-			document.querySelector(newStars).classList.add('display-block');
+			funcs.addRemoveClass(currentStars, 'no-display', 'display-block');
+			funcs.addRemoveClass(newStars, 'display-block', 'no-display');
+
+			// document.querySelector(currentStars).classList.remove('display-block');
+			// document.querySelector(currentStars).classList.add('no-display');
+			// document.querySelector(newStars).classList.remove('no-display');
+			// document.querySelector(newStars).classList.add('display-block');
 		},
 	stopClickNoDisplay : function(){
 			dom.stopClick.classList.add('no-display');
@@ -151,17 +155,12 @@ dom.gameInstructions.addEventListener('click', function(){
 const timerInterval = setInterval(funcs.increaseTime, 1000);
 
 //when deck is selected, apply correct deck to cards, update remove overlay, show gameboard, start game and minimize help
-dom.imagePack.addEventListener('click', function(){
-	funcs.clickToPlay('images');
-	funcs.minimizeHelp();
-});
-dom.numberPack.addEventListener('click', function(){
-	funcs.clickToPlay('numbers');
-	funcs.minimizeHelp();
-});
-dom.colorPack.addEventListener('click', function(){
-	funcs.clickToPlay('colors');
-	funcs.minimizeHelp();
+dom.cardPacks.addEventListener('click', function(e){
+	if(e.target.classList.contains('packs')){
+		const deckName = e.target.classList[1];
+		funcs.clickToPlay(deckName);
+		funcs.minimizeHelp();
+	};
 });
 
 //when reset button is clicked reset the game
@@ -200,7 +199,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 	const back = card.children[0];
 
 	//make sure we are clicking on an actual card and not somewhere else in the card container (and that if it is a card that it has not already been matched)
-	if (card.classList[0] === 'card' && card.classList[1] != 'matched') {
+	if (card.classList[0] === 'card' && card.classList.contains('matched') === false) {
 
 		//toggle css classes on the front and back of the cards to make them flip so we can see the front of the card and add overlay to page so player doesn't click on next card too soon
 		dom.stopClick.classList.remove('no-display');
@@ -291,23 +290,24 @@ dom.cardsContainer.addEventListener('click', function(e){
 		};
 
 		//whether cards are matched or not...
-		//show moves on page
+		//updated number of moves on page
 		document.querySelector('#moves').innerText = `Moves:
 			${js.moves}`;
 
 		//check for the correct number of stars
 		//if over 1 move go down to 2 stars
+
 		if(js.moves > 15 && js.moves <= 22){
-			funcs.starCheck('.three-stars', '.two-stars');
+			funcs.starCheck(dom.threeStars, dom.twoStars);
 		}
 		//if over 3 moves go down to 1 star
 		else if (js.moves > 22 ){
-			funcs.starCheck('.two-stars', '.one-star');
+			funcs.starCheck(dom.twoStars, dom.oneStar);
 		}
 
 		//reset firstCardClass
 		js.firstCardClass = 'blank';
-
+		//increase number of moves
 		js.moves++;
 	}
   	};

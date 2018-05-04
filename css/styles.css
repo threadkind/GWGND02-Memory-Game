@@ -17,7 +17,6 @@
 
 /* O V E R L A Y S   &   P O P   U P S */
 #overlay, .winner {
-	z-index: 25;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -27,6 +26,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+#overlay {
+	z-index: 3;
+}
+
+.winner {
+	z-index: 5;
 }
 
 #congratulations, #play-button {
@@ -139,7 +146,7 @@
 	font-size: 30px;
 	background: var(--white);
 	box-shadow: 0 0 2px 2px var(--low-opacity-black);
-	z-index: 26;
+	z-index: 4;
 	cursor: pointer;
 	text-align: center;
 	transition: all 1s;
@@ -212,7 +219,7 @@
 	color: var(--white);
 	margin: 0;
 	padding: 0;
-	z-index: 10;
+	z-index: 2;
 }
 
 #moves, #timer, #reset {
@@ -275,7 +282,7 @@
 	border-radius: 0 0 10px 10px;
 	height: 70vh;
 	max-height: 500px;
-	z-index: -10;
+	z-index: -1;
 }
 
 .row {

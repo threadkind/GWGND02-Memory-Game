@@ -23,7 +23,7 @@ const dom = {
 	noSound : document.querySelector('.no-sound'),
 	gameSound : document.querySelector('#game-sound'),
 	newRecord : document.querySelector('.new-record')
-};
+	};
 
 const js = {
 	chosenCardDeck : "none",
@@ -40,7 +40,7 @@ const js = {
  	moves : 1,
  	timer : 0,
  	currentCalcTime : "0"
- };
+	};
 
 const funcs = {
 	increaseTime : function (){
@@ -77,11 +77,6 @@ const funcs = {
 	starCheck : function(currentStars, newStars){
 			funcs.addRemoveClass(currentStars, 'no-display', 'display-block');
 			funcs.addRemoveClass(newStars, 'display-block', 'no-display');
-
-			// document.querySelector(currentStars).classList.remove('display-block');
-			// document.querySelector(currentStars).classList.add('no-display');
-			// document.querySelector(newStars).classList.remove('no-display');
-			// document.querySelector(newStars).classList.add('display-block');
 		},
 	stopClickNoDisplay : function(){
 			dom.stopClick.classList.add('no-display');
@@ -132,7 +127,7 @@ const funcs = {
 			funcs.addRemoveClass(dom.howFull, "opacity-zero", "no-display");
 			setTimeout(funcs.addRemoveClass(dom.howFull, "opacity-one", "opacity-zero"), 1500);
 		}
-};
+	};
 
 //if a user has their device in portrait mode and it is wider than 600px add some margin to the top
 if(window.innerHeight > window.innerWidth && window.innerWidth > 600){
@@ -223,7 +218,7 @@ dom.cardsContainer.addEventListener('click', function(e){
 
 			//check to see if the cards match and if they do add a 'matched' class
 			const selected = document.querySelectorAll('.selected');
-
+			console.log(selected);
 			if(js.firstCardClass === js.secondCardClass && js.firstCardNumber != js.secondCardNumber ){
 
 				//add correct sound if audio is on
@@ -235,6 +230,18 @@ dom.cardsContainer.addEventListener('click', function(e){
 				selected[0].classList.add('matched');
 				selected[1].classList.add('matched');
 			}
+			else {
+				//shake cards if they do not match
+				console.log('notmatched');
+				console.log(selected[0]);
+				console.log(selected[1]);
+				selected[0].classList.add('shake');
+				selected[1].classList.add('shake');
+				setTimeout(function(){
+					selected[0].classList.remove('shake');
+					selected[1].classList.remove('shake');
+				}, 400);
+			}
 
 			//create counter for the number of cards that are not matched
 			let notMatched = 0;
@@ -244,8 +251,8 @@ dom.cardsContainer.addEventListener('click', function(e){
 				//deselect all cards to start next turn
 				dom.cards[k].classList.remove('selected');
 				//if the card does not have the matched class...
-				if(dom.cards[k].classList[1] != 'matched'){
-					//...increase the matched counter
+				if(dom.cards[k].classList.contains('matched') == false){
+					//...increase the not matched counter
 					notMatched++;
 
 					//set a timeout function to flip the cards back around after 0.8 seconds if they don't match

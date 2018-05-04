@@ -134,6 +134,7 @@
 	background: var(--white);
 	border-radius: 50%;
 	box-shadow: 0 0 2px 2px var(--low-opacity-black);
+	z-index: 4;
 }
 
 #audio-button:active {
@@ -343,6 +344,9 @@
 	transition: transform 0.2s;
 }
 
+.shake {
+    animation: shake 0.4s;
+}
 
 /* M E D I A    Q U E R I E S */
 @media screen and (min-width: 450px) {
@@ -438,3 +442,11 @@
 
 }
 
+/* K E Y F R A M E S */
+@keyframes shake {
+	0% { transform: translate(0px, 0px); }
+	25% { transform: translate(5px, 0px); }
+	50% { transform: translate(-5px, 0px); }
+	75% { transform: translate(5px, 0px); }
+	100% { transform: translate(0px, 0px); }
+}

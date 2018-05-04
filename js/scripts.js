@@ -39,7 +39,8 @@ const js = {
  	secondCardClass : 'blank',
  	moves : 1,
  	timer : 0,
- 	currentCalcTime : "0"
+ 	currentCalcTime : "0",
+ 	selected : "blank"
 	};
 
 const funcs = {
@@ -126,6 +127,14 @@ const funcs = {
 			}
 			funcs.addRemoveClass(dom.howFull, "opacity-zero", "no-display");
 			setTimeout(funcs.addRemoveClass(dom.howFull, "opacity-one", "opacity-zero"), 1500);
+		},
+	animate : function(type){
+			js.selected[0].classList.add(type);
+			js.selected[1].classList.add(type);
+			setTimeout(function(){
+				js.selected[0].classList.remove(type);
+				js.selected[1].classList.remove(type);
+			}, 400);
 		}
 	};
 
@@ -196,9 +205,8 @@ dom.cardsContainer.addEventListener('click', function(e){
 	//make sure we are clicking on an actual card and not somewhere else in the card container (and that if it is a card that it has not already been matched)
 	if (card.classList[0] === 'card' && card.classList.contains('matched') === false) {
 
-		//toggle css classes on the front and back of the cards to make them flip so we can see the front of the card and add overlay to page so player doesn't click on next card too soon
-		dom.stopClick.classList.remove('no-display');
-		setTimeout(funcs.stopClickNoDisplay, 500)
+		//toggle css classes on the front and back of the cards to make them flip so we can see the front of the card and
+
 		front.classList.toggle('frontFlipped');
 		back.classList.toggle('backFlipped');
 
@@ -216,10 +224,16 @@ dom.cardsContainer.addEventListener('click', function(e){
 			js.secondCardClass = card.children[1].classList[1];
 			card.classList.add('selected');
 
+			//add overlay to page so player doesn't click on next card too soon
+			dom.stopClick.classList.remove('no-display');
+			setTimeout(funcs.stopClickNoDisplay, 800);
+
 			//check to see if the cards match and if they do add a 'matched' class
-			const selected = document.querySelectorAll('.selected');
-			console.log(selected);
+			js.selected = document.querySelectorAll('.selected');
 			if(js.firstCardClass === js.secondCardClass && js.firstCardNumber != js.secondCardNumber ){
+
+				//scale cards
+				funcs.animate('grow');
 
 				//add correct sound if audio is on
 				if(dom.soundEffects.classList.item(1) === null){
@@ -227,20 +241,13 @@ dom.cardsContainer.addEventListener('click', function(e){
 				}
 
 				//add matched class
-				selected[0].classList.add('matched');
-				selected[1].classList.add('matched');
+				js.selected[0].classList.add('matched');
+				js.selected[1].classList.add('matched');
 			}
 			else {
 				//shake cards if they do not match
-				console.log('notmatched');
-				console.log(selected[0]);
-				console.log(selected[1]);
-				selected[0].classList.add('shake');
-				selected[1].classList.add('shake');
-				setTimeout(function(){
-					selected[0].classList.remove('shake');
-					selected[1].classList.remove('shake');
-				}, 400);
+				funcs.animate('shake');
+
 			}
 
 			//create counter for the number of cards that are not matched

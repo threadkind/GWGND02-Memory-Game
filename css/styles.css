@@ -180,8 +180,16 @@
 
 .how-full {
 	font-family: var(--secondary-font);
-	font-size: 20px;
+	font-size: 18px;
 	padding: 2%;
+	line-height: 1em;
+	text-align: left;
+}
+
+#clickToClose {
+	color: var(--plum);
+	font-family: var(--secondary-font);
+	float: right;
 }
 
 .opacity-one {
